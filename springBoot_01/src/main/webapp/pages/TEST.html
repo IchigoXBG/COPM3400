@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h3>添加品牌</h3>
+
+
+
+    <el-form :inline="true" :model="fromData" class="demo-form-inline">
+        <el-form-item label="ID">
+            <el-input v-model="fromData.userId" placeholder="userId"></el-input>
+        </el-form-item>
+            <el-form-item label="名字">
+                <el-input v-model="fromData.userName" placeholder="userName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="密码">
+                <el-input v-model="fromData.upass" placeholder="upass"></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="deleteByUserId">submit</el-button>
+            </el-form-item>
+    </el-form>
+
+
+
+    <el-table
+            ref="multipleTable"
+            :data="tableData"
+            tooltip-effect="dark"
+            style="width: 100%"
+            @selection-change="handleSelectionChange">
+        <el-table-column
+                type="selection"
+                width="55">
+        </el-table-column>
+        <el-table-column
+                prop="userId"
+                label="userId"
+                width="120">
+        </el-table-column>
+        <el-table-column
+                prop="userName"
+                label="userName"
+                width="120">
+        </el-table-column>
+        <el-table-column
+                prop="upass"
+                label="upass"
+                show-overflow-tooltip>
+        </el-table-column>
+
+        <el-table-column label="操作" align="center">
+            <template slot-scope="scope4User">
+                <el-button type="primary" size="mini" @click="handleUpdate(scope4User.row)">编辑</el-button>
+                <el-button type="primary" size="mini" @click="handleDelete(scope4User.row)">删除</el-button>
+            </template>
+
+        </el-table-column>
+
+    </el-table>
+
+
+    <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[10, 20, 30, 40]"
+            :page-size="pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="tableSize">
+    </el-pagination>
+
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+<script src="../js/axios-0.18.0.js"></script>
+
+<script>
+
+
+
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                pageSize:10,
+                tableSize:0,
+                currentPage:1,
+                multipleSelection: [],
+                selectedIds:[],
+                tableData:[],
+                fromDate:[],
+                pageBean:{
+                    currentPage_:this.currentPage,
+                    pageSize_:this.pageSize
+                },
+            }
+        },
+        mounted(){
+            this.getAll();
+        },
+        methods:{
+            handleSizeChange(val) {
+                this.pageSize = val;
+            },
+            handleCurrentChange(val) {
+                this.currentPage = val;
+                this.getAll();
+
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+
+
+            },
+            handleUpdate(row){
+                console.log(row);
+                var _this = this;
+                axios({
+                    method:"get",
+                    url:"http://localhost:7788/rest/"+row.userId
+                }).then(function (resp) {
+                    _this.fromDate = resp.data.data;
+                })
+
+            },
+            handleDelete(row){
+
+            },
+            deleteByUserId(){
+                for (let i=0;i<this.multipleSelection.length;i++){
+                    let selectElement =this.multipleSelection[i];
+                    this.selectedIds[i] = selectElement.userId;
+                }
+                var _this = this;
+                console.log(this.selectedIds);
+                axios({
+                    method:"Delete",
+                    url:"http://localhost:7788/rest/",
+                    data:this.selectedIds
+                }).then(function (resp) {
+                    _this.getAll();
+                })
+
+            },
+            // getAll() {
+            //         var _this = this;
+            //         axios({
+            //             method:"get",
+            //             url:"http://localhost:7788/rest"
+            //         }).then(function (resp) {
+            //             console.log(resp.data.data);
+            //             _this.tableData = resp.data.data;
+            //
+            //         })
+            // },
+            getAll(){
+                var _this = this;
+                axios({
+                    method:"get",
+                    url:"http://localhost:7788/rest/"+this.currentPage+"/"+this.pageSize
+                }).then(function (resp) {
+                    _this.tableData = resp.data.data.pageData;
+                    _this.tableSize = resp.data.data.totalPages;
+                })
+            },
+            resetFrom(){
+                this.fromDate = {};
+            },
+            submitFrom(){
+                var _this = this;
+                axios({
+                    method:"post",
+                    url:"http://localhost:7788/rest",
+                    data:this.fromDate
+                }).then(function (resp) {
+                    console.log(resp.data);
+                    if(resp.data.code == 20011){
+                        _this.$message.success("Success");
+                        _this.resetFrom();
+                    }else if(resp.data.code == 20010){
+                        _this.$message.error("Error");
+                    }else {
+                        _this.$message.error(resp.data.message);
+                    }
+
+                }).finally(function () {
+                    _this.getAll();})
+            },
+            updateFrom(){
+                var _this = this;
+                axios({
+                    method:"put",
+                    url:"http://localhost:7788/rest",
+                    data:this.fromDate
+                }).then(function (resp) {
+                    console.log(resp.data.data);
+
+                }).finally(function () {
+                    _this.getAll();})
+            }
+
+
+        }
+
+    });
+
+
+
+  // axios({
+  //     method:"get",
+  //     url:"http://localhost:7781/Tweb/AxioServlet?username=kkp"
+  // }).then(function (resp) {
+  //     alert(resp.data);
+  // })
+
+  // axios({
+  //     method:"post",
+  //     url:"http://localhost:7781/Tweb/AxioServlet"
+  //     data:"username=kkp"
+  // }).then(function (resp) {
+  //     alert(resp.data);
+  // })
+
+  // axios.get("http://localhost:7781/Tweb/AxioServlet?username=kkp").then(function (resp) {
+  //     alert(resp.data)
+  // })
+
+  // axios.post("http://localhost:7781/Tweb/AxioServlet","username=kkp").then(function (resp) {
+  //     alert(resp.data)
+  // })
+
+</script>
+
+</body>
+</html>

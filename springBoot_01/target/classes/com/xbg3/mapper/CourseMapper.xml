@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xbg3.mapper.CourseMapper">
+
+    <resultMap id="courseMap" type="course">
+        <result property="name" column="CourseName"></result>
+        <result property="mark" column="Mark"></result>
+    </resultMap>
+
+    <select id="selectMark" resultType="java.lang.Integer">
+        select ec.Mark from course as c,enrolledcourse as ec,user as s where c.CourseName = #{courseName} and c.Id = ec.CourseId and  ec.UserId = s.id  and s.userid IN
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+
+    </select>
+
+<!--    <select id="selectAllCourse" resultMap="courseMap" >
+        select c.CourseName,ec.Mark from course as c,enrolledcourse as ec,student as s where c.Id = ec.CourseId and s.userid= #{arg0} and  ec.StudentId = s.id
+    </select>-->
+</mapper>

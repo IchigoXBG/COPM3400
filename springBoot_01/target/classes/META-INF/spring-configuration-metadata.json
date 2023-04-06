@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "userxbg",
+      "type": "com.xbg3.pojo.UserXbg",
+      "sourceType": "com.xbg3.pojo.UserXbg"
+    }
+  ],
+  "properties": [
+    {
+      "name": "userxbg.password",
+      "type": "java.lang.String",
+      "sourceType": "com.xbg3.pojo.UserXbg"
+    },
+    {
+      "name": "userxbg.user-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xbg3.pojo.UserXbg"
+    }
+  ],
+  "hints": []
+}

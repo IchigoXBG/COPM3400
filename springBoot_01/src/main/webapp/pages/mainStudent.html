@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h1>Class</h1>
+
+    <BR>
+    <BR>
+    <BR>
+    <BR>
+
+    <!-- Form -->
+    <el-button type="primary" round @click="dialogFormVisible = true">Enroll Class</el-button>
+
+    <el-dialog title="Enroll Class" :visible.sync="dialogFormVisible">
+        <el-form :model="courseForm">
+            <el-form-item label="Class Name">
+                <el-input v-model="courseForm.name" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">Cancel</el-button>
+            <el-button type="primary" @click="submitCourseForm()">Confirm</el-button>
+        </div>
+    </el-dialog>
+
+
+    <el-table
+            ref="multipleTable"
+            :data="tableData"
+            tooltip-effect="dark"
+            style="width: 100%">
+
+        <el-table-column
+                prop="name"
+                label="Course Name"
+                width="600">
+        </el-table-column>
+        <el-table-column
+                prop="credit"
+                label="Credit"
+                width="600">
+        </el-table-column>
+        <el-table-column
+                prop="mark"
+                label="Grade"
+                width="120">
+        </el-table-column>
+
+
+
+    </el-table>
+
+
+
+
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<script src="../element-ui/lib//umd/locale/en.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+    ELEMENT.locale(ELEMENT.lang.en)
+</script>
+
+<script>
+
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                pageSize:10,
+                tableSize:0,
+                currentPage:1,
+                selectedIds:[],
+                tableData:[],
+                fromDate:[],
+                courseForm:{},
+                dialogFormVisible:false,
+
+
+            }
+        },
+        mounted(){
+            this.getCourse();
+        },
+        methods:{
+
+            getCourse(){
+                var _this = this;
+                axios({
+                    method:"get",
+                    url:"http://localhost:7788/user/student/course"
+                }).then(function (resp) {
+                    _this.tableData = resp.data.data;
+                    for (let i=0;i<_this.tableData.length;i++){
+                        _this.tableData[i].credit ="3.0";
+                    }
+                })
+            },
+
+            submitCourseForm(){
+                console.log(this.courseForm.name);
+
+                var _this = this;
+                this.dialogFormVisible = false
+                axios({
+                    method:"post",
+                    url:"http://localhost:7788/rest/addCourse",
+                    data:this.courseForm.name,
+                    headers:{'Content-Type':'application/json;charset=UTF-8'},
+                }).then(function (resp) {
+                    _this.getCourse();
+                    if(resp.data.code == 20011){
+                        _this.$message.success("Success");
+                        _this.resetFrom();
+                    }else if(resp.data.code == 20010){
+                        _this.$message.error("Error");
+                    }else {
+                        _this.$message.error(resp.data.message);
+                    }
+
+                })
+
+            },
+
+
+
+        }
+
+    });
+
+
+
+    // axios({
+    //     method:"get",
+    //     url:"http://localhost:7781/Tweb/AxioServlet?username=kkp"
+    // }).then(function (resp) {
+    //     alert(resp.data);
+    // })
+
+    // axios({
+    //     method:"post",
+    //     url:"http://localhost:7781/Tweb/AxioServlet"
+    //     data:"username=kkp"
+    // }).then(function (resp) {
+    //     alert(resp.data);
+    // })
+
+    // axios.get("http://localhost:7781/Tweb/AxioServlet?username=kkp").then(function (resp) {
+    //     alert(resp.data)
+    // })
+
+    // axios.post("http://localhost:7781/Tweb/AxioServlet","username=kkp").then(function (resp) {
+    //     alert(resp.data)
+    // })
+
+</script>
+
+</body>
+</html>

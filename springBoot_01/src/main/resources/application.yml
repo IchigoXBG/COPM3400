@@ -1,0 +1,67 @@
+
+
+userxbg:
+  username: foo2
+  password: bar2
+
+
+spring:
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  profiles:
+    active: ${profile.active}
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/3340Project?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+
+
+
+
+
+#mybatis:
+#  type-aliases-package: com.xbg3.pojo
+#  mapper-locations:
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.xbg3.pojo
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 7788
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+server:
+  port: 7789
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: rel
+server:
+  port: 7788
+---
+
+
+

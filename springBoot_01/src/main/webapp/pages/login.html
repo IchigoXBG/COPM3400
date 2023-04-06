@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        #app {
+            margin-top: 200px;
+            margin-bottom: 200px;
+            margin-left: 450px;
+            margin-right: 450px;
+            border: 10px double;
+            background-color: #ffffff;
+        }
+        #bg {
+            background:url("../img/download.png");
+        }
+    </style>
+</head>
+
+<body id="bg">
+<div id="app">
+    <el-row type="flex" class="row-bg" justify="center" ><h1>Welcome to the System</h1></el-row>
+    <el-alert v-if="wrongPassword"
+              title="Wrong Password/ID"
+              center
+              type="error"
+              effect="dark">
+    </el-alert>
+
+    <el-row type="flex" class="row-bg" justify="center">
+        <el-col :span="7" :offset="-1">
+
+        </el-col>
+    </el-row>
+
+    <el-row type="flex" class="row-bg" justify="center">
+        <el-form :inline="true" :model="userData" class="demo-form-inline" label-width="60px" >
+            <br />
+            <el-form-item label="Username:" style="width: 200px">
+                <el-input prefix-icon="el-icon-user" v-model="userData.userId" class="username" placeholder="10 digits" autosize>
+                </el-input>
+            </el-form-item>
+            <br />
+            <el-form-item label="Password:" style="width: 200px">
+                <el-input type="password" prefix-icon="el-icon-lock" v-model="userData.upass" class="pwd"  autosize></el-input>
+            </el-form-item>
+            <br />
+            <el-form-item>
+                <el-dropdown @command="handleAccountType">
+                    <el-button type="primary" round >
+                        {{this.state}}<i class="el-icon-arrow-down el-icon--right" ></i>
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item command="Student">Student</el-dropdown-item>
+                        <el-dropdown-item command="Teacher">Teacher</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+                <el-button type="primary" @click="login" round>submit</el-button>
+            </el-form-item>
+        </el-form>
+    </el-row>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<script src="../element-ui/lib//umd/locale/en.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+    ELEMENT.locale(ELEMENT.lang.en)
+</script>
+
+<script>
+
+
+
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                wrongPassword: false,
+                state:"Choose",
+                pageSize:10,
+                tableSize:0,
+                currentPage:1,
+                multipleSelection: [],
+                selectedIds:[],
+                userData:{},
+                fromDate:[],
+                pageBean:{
+                    currentPage_:this.currentPage,
+                    pageSize_:this.pageSize
+                },
+            }
+        },
+        mounted(){
+
+        },
+        methods:{
+            handleAccountType(command) {
+                this.state=command;
+            },
+            login(){
+                var _this = this;
+                console.log(this.userData);
+                axios({
+                    method:"post",
+                    url:"http://localhost:7788/user/login/"+_this.state,
+                    data:this.userData
+                }).then(function (resp) {
+                    console.log(resp.data);
+                    if(resp.data.code == 20041){
+                        _this.$message.success("Success");
+                        if(_this.state == "Teacher"){
+                            location.href ="../pages/main.html";
+                        }else{
+                            location.href ="../pages/mainStudent.html";
+                        }
+                    }else {
+                        _this.wrongPassword = true;
+                    }
+                })
+            },
+
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

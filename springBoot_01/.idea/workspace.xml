@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3bf56a88-cf9d-45e1-930f-a3bcce4ed3ba" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="XXXMapper" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="test" />
+        <option value="rel" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="2D2sLycfXH1SCNfQlksjD4uxaK3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/pages" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Facet" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\webapp\pages" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\java\com\xbg3" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\java\com\xbg3\config" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\java\com\xbg3\mapper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\webapp\img" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\src\main\webapp\pages" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\target\classes\META-INF\resources\pages" />
+      <recent name="C:\Users\Hanser_XTS\eclipse-workspace\springBoot_01\target\classes\com\xbg3\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xbg3.controller" />
+      <recent name="com.xbg3.controller.interceptor" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringBoot01Application">
+    <configuration name="SpringBoot01ApplicationTests.addCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springBoot_01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xbg3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xbg3" />
+      <option name="MAIN_CLASS_NAME" value="com.xbg3.SpringBoot01ApplicationTests" />
+      <option name="METHOD_NAME" value="addCourse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBoot01ApplicationTests.addEnrollment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springBoot_01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xbg3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xbg3" />
+      <option name="MAIN_CLASS_NAME" value="com.xbg3.SpringBoot01ApplicationTests" />
+      <option name="METHOD_NAME" value="addEnrollment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBoot01ApplicationTests.checkCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springBoot_01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xbg3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xbg3" />
+      <option name="MAIN_CLASS_NAME" value="com.xbg3.SpringBoot01ApplicationTests" />
+      <option name="METHOD_NAME" value="checkCourse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBoot01ApplicationTests.selectEnrolledStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springBoot_01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xbg3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xbg3" />
+      <option name="MAIN_CLASS_NAME" value="com.xbg3.SpringBoot01ApplicationTests" />
+      <option name="METHOD_NAME" value="selectEnrolledStudent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBoot01Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <module name="springBoot_01" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.xbg3.SpringBoot01Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringBoot01Application" />
+        <item itemvalue="JUnit.SpringBoot01ApplicationTests.selectEnrolledStudent" />
+        <item itemvalue="JUnit.SpringBoot01ApplicationTests.checkCourse" />
+        <item itemvalue="JUnit.SpringBoot01ApplicationTests.addEnrollment" />
+        <item itemvalue="JUnit.SpringBoot01ApplicationTests.addCourse" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="3bf56a88-cf9d-45e1-930f-a3bcce4ed3ba" name="变更" comment="" />
+      <created>1659908465484</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659908465484</updated>
+      <workItem from="1659908466792" duration="7000" />
+      <workItem from="1659916447090" duration="2524000" />
+      <workItem from="1659924000744" duration="301000" />
+      <workItem from="1659927986425" duration="320000" />
+      <workItem from="1660010092692" duration="2776000" />
+      <workItem from="1660178873165" duration="517000" />
+      <workItem from="1660224299328" duration="629000" />
+      <workItem from="1660342465230" duration="5010000" />
+      <workItem from="1660449855733" duration="2088000" />
+      <workItem from="1660524814053" duration="2378000" />
+      <workItem from="1660534098353" duration="2756000" />
+      <workItem from="1660694183292" duration="595000" />
+      <workItem from="1660710146854" duration="145000" />
+      <workItem from="1660710383506" duration="2627000" />
+      <workItem from="1660884756663" duration="2225000" />
+      <workItem from="1660924747730" duration="1970000" />
+      <workItem from="1660930086736" duration="1065000" />
+      <workItem from="1661032383108" duration="1564000" />
+      <workItem from="1661206821712" duration="710000" />
+      <workItem from="1661359842132" duration="1211000" />
+      <workItem from="1662948806655" duration="1259000" />
+      <workItem from="1664252742674" duration="369000" />
+      <workItem from="1668143539470" duration="535000" />
+      <workItem from="1668144583686" duration="27000" />
+      <workItem from="1668144659728" duration="342000" />
+      <workItem from="1668145405286" duration="759000" />
+      <workItem from="1668146202982" duration="4519000" />
+      <workItem from="1678329068257" duration="10000" />
+      <workItem from="1678331274926" duration="738000" />
+      <workItem from="1678407587389" duration="23764000" />
+      <workItem from="1678566901679" duration="4281000" />
+      <workItem from="1678585093284" duration="15875000" />
+      <workItem from="1678745654073" duration="637000" />
+      <workItem from="1678899725685" duration="10903000" />
+      <workItem from="1679863180249" duration="14047000" />
+      <workItem from="1680286115975" duration="22066000" />
+      <workItem from="1680556382357" duration="17419000" />
+      <workItem from="1680655307665" duration="3501000" />
+      <workItem from="1680710052070" duration="7734000" />
+      <workItem from="1680724924653" duration="3006000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/xbg3/SpringBoot01ApplicationTests.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xbg3/SpringBoot01Application.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <el-form :inline="true" :model="brand" class="demo-form-inline">
+    <el-form-item label="活动区域">
+      <el-select v-model="brand.status" placeholder="活动区域">
+        <el-option label="启用" value="1"></el-option>
+        <el-option label="禁用" value="0"></el-option>
+      </el-select>
+      <el-form-item label="企业名字">
+        <el-input v-model="brand.companyName" placeholder="企业名字"></el-input>
+      </el-form-item>
+      <el-form-item label="品牌名字">
+        <el-input v-model="brand.brandName" placeholder="品牌名字"></el-input>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="selectByPageAndCondition">查询</el-button>
+      </el-form-item>
+  </el-form>
+
+  <el-table
+          ref="multipleTable"
+          :data="tableData"
+          tooltip-effect="dark"
+          style="width: 100%"
+          @selection-change="handleSelectionChange">
+    <el-table-column
+            type="selection"
+            width="55">
+    </el-table-column>
+    <el-table-column
+            prop="id"
+            label="id"
+            width="120">
+    </el-table-column>
+    <el-table-column
+            prop="brandName"
+            label="姓名"
+            width="120">
+    </el-table-column>
+    <el-table-column
+            prop="companyName"
+            label="地址"
+            show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+            prop="ordered"
+            label="顺序"
+            show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+            prop="description"
+            label="简介"
+            show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+            prop="status"
+            label="状态"
+            show-overflow-tooltip>
+    </el-table-column>
+  </el-table>
+  <div style="margin-top: 20px"></div>
+
+  <el-button type="danger" plain @click="deleteIds">危险按钮</el-button>
+
+
+  <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[10, 20, 30, 40]"
+          :page-size="pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="tableSize">
+  </el-pagination>
+
+
+</div>
+
+<script src="js/vue.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+<script src="js/axios-0.18.0.js"></script>
+
+
+<script>
+  new Vue({
+    el: "#app",
+    mounted(){
+      this.selectByPageAndCondition();
+    },
+    methods: {
+      kkkk(){
+        console.log(this.brand);
+      },
+
+      handleSizeChange(val) {
+        this.pageSize = val;
+      },
+      handleCurrentChange(val) {
+        this.currentPage = val;
+        this.selectByPageAndCondition();
+
+      },
+
+      selectByPage(){
+        var _this = this;
+        axios({
+          method:"get",
+          url:"http://localhost:8080/brand-case/brand/selectByPage?currentPage="+_this.currentPage+"&pageSize="+_this.pageSize,
+        }).then(function (resp) {
+          _this.tableData = resp.data.pageData;
+          _this.tableSize = resp.data.totalPage;
+        })
+      },
+
+      selectByPageAndCondition(){
+        console.log(this.brand);
+        var _this = this;
+        axios({
+          method:"post",
+          url:"http://localhost:8080/brand-case/brand/selectByPageAndCondition?currentPage="+this.currentPage+"&pageSize="+this.pageSize,
+          data:this.brand
+        }).then(function (resp) {
+          _this.tableData = resp.data.pageData;
+          _this.tableSize = resp.data.totalPage;
+        })
+      },
+
+      selectAll(){
+        var _this = this;
+        axios({
+          method:"get",
+          url:"http://localhost:8080/brand-case/brand/seleclAll",
+        }).then(function (resp) {
+          _this.tableData = resp.data;
+        })
+      },
+
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+      deleteIds(){
+
+        for (let i=0;i<this.multipleSelection.length;i++){
+          let selectElement =this.multipleSelection[i];
+          this.selectedIds[i] = selectElement.id;
+        }
+        var _this = this;
+        axios({
+          method:"post",
+          url:"http://localhost:8080/brand-case/brand/deleteByids",
+          data:_this.selectedIds
+        }).then(function (resp) {
+          _this.selectAll();
+          alert(resp.data);
+        })
+
+      }
+
+    },
+    data() {
+      return {
+        pageSize:10,
+        tableSize:0,
+        currentPage:1,
+        multipleSelection: [],
+        selectedIds:[],
+        tableData:[],
+        brand:{
+          id:"",
+          brandName:"",
+          companyName:"",
+          ordered:"",
+          status:"",
+          description:""
+        }
+      }
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
